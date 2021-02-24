@@ -1,0 +1,127 @@
+# Designing the boardd
+board = {
+    'F1' : ' ', 'F2' : ' ', 'F3' : ' ',
+    'S1' : ' ', 'S2' : ' ', 'S3' : ' ',
+    'T1' : ' ', 'T2' : ' ', 'T3' : ' '
+}
+
+player = 1      # initialising the player
+moves = 0       # counting the number of moves
+
+result = 0
+
+def winner():
+    # Player 1 wins
+
+    # Horizontal condition
+    if board['F1'] == 'X' and board['F2'] == 'X' and board['F3'] == 'X':
+        print("CONGRATULATION!!!! \n PLAYER 1 WINS!!!!!")
+        return 1
+    if board['S1'] == 'X' and board['S2'] == 'X' and board['S3'] == 'X':
+        print("CONGRATULATION!!!! \n PLAYER 1 WINS!!!!!")
+        return 1
+    if board['T1'] == 'X' and board['T2'] == 'X' and board['T3'] == 'X':
+        print("CONGRATULATION!!!! \n PLAYER 1 WINS!!!!!")
+        return 1
+
+    # Vertical condition
+    if board['F1'] == 'X' and board['S1'] == 'X' and board['T1'] == 'X':
+        print("CONGRATULATION!!!! \n PLAYER 1 WINS!!!!!")
+        return 1
+
+    if board['F2'] == 'X' and board['S2'] == 'X' and board['T2'] == 'X':
+        print("CONGRATULATION!!!! \n PLAYER 1 WINS!!!!!")
+        return 1
+
+    if board['F3'] == 'X' and board['S3'] == 'X' and board['T3'] == 'X':
+        print("CONGRATULATION!!!! \n PLAYER 1 WINS!!!!!")
+        return 1
+
+    # Diagnoal condition
+    if board['F1'] == 'X' and board['S2'] == 'X' and board['T3'] == 'X':
+        print("CONGRATULATION!!!! \n PLAYER 1 WINS!!!!!")
+        return 1
+    if board['F3'] == 'X' and board['S2'] == 'X' and board['T1'] == 'X':
+        print("CONGRATULATION!!!! \n PLAYER 1 WINS!!!!!")
+        return 1
+
+    # Player 2 wins
+    # Horizontal condition
+    if board['F1'] == 'O' and board['F2'] == 'O' and board['F3'] == 'O':
+        print("CONGRATULATION!!!! \n PLAYER 2 WINS!!!!!")
+        return 1
+    if board['S1'] == 'O' and board['S2'] == 'O' and board['S3'] == 'O':
+        print("CONGRATULATION!!!! \n PLAYER 2 WINS!!!!!")
+        return 1
+    if board['T1'] == 'O' and board['T2'] == 'O' and board['T3'] == 'O':
+        print("CONGRATULATION!!!! \n PLAYER 2 WINS!!!!!")
+        return 1
+
+    # Vertical condition
+    if board['F1'] == 'O' and board['S1'] == 'O' and board['T1'] == 'O':
+        print("CONGRATULATION!!!! \n PLAYER 2 WINS!!!!!")
+        return 1
+
+    if board['F2'] == 'O' and board['S2'] == 'O' and board['T2'] == 'O':
+        print("CONGRATULATION!!!! \n PLAYER 2 WINS!!!!!")
+        return 1
+
+    if board['F3'] == 'O' and board['S3'] == 'O' and board['T3'] == 'O':
+        print("CONGRATULATION!!!! \n PLAYER 1 WINS!!!!!")
+        return 1
+
+    # Diagnoal condition
+    if board['F1'] == 'O' and board['S2'] == 'O' and board['T3'] == 'O':
+        print("CONGRATULATION!!!! \n PLAYER 2 WINS!!!!!")
+        return 1
+    if board['F3'] == 'O' and board['S2'] == 'O' and board['T1'] == 'O':
+        print("CONGRATULATION!!!! \n PLAYER 2 WINS!!!!!")
+        return 1
+
+# For user to get the idea of the formatting and initials
+print("###############")
+print('F1 | F2 | F3')
+print('---+----+----')
+print('S1 | S2 | S3')
+print('---+----+----')
+print('T1 | T2 | T3')
+print("###############")
+
+# To display the empty board on the screen before starting the game
+while True:
+    print(board['F1']+ '|' +board['F2']+ '|' +board['F3'])
+    print("-+-+-")
+    print(board['S1']+ '|' +board['S2']+ '|' +board['S3'])
+    print("-+-+-")
+    print(board['T1']+ '|' +board['T2']+ '|' +board['T3'])
+
+    # To store the return value of the function
+    result = winner()
+
+    # To stop the program
+    if moves == 9 or result == 1:
+        break
+
+    #Taking input from the users
+    while True:
+        # Defining player 1 input
+        if player == 1:
+            p1_input = input("Player 1's turn: ")
+            if p1_input.upper() in board and board[p1_input.upper()] == ' ':
+                board[p1_input.upper()] = 'X'
+                player = 2
+                break
+            else:
+                print("Check your input from above and enter a valid input")
+                continue
+        else:
+            #Defining player 2 input
+            p2_input = input("Player 2's turn: ")
+            if p2_input.upper() in board and board[p2_input.upper()] == ' ':
+                board[p2_input.upper()] = 'O'
+                player = 1
+                break
+            else:
+                print("Check your input from above and enter a valid input")
+
+    moves = moves+1
